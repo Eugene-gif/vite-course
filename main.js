@@ -1,6 +1,6 @@
-import styles from './src/assets/06.module.scss';
+import data from './src/assets/07.json';
+// Если нам нужны только определённые поля объекта, то можно выполнить деструктурирование
+import { name, age } from './src/assets/07.json';
 
-
-console.log(styles);
-
-document.body.classList.add(styles.wrapper)
+console.log(data);
+console.log(name, age);
