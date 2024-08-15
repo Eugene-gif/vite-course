@@ -1,9 +1,12 @@
-import imageUrl from './src/assets/images/vite.svg';
-import imageUrl2 from './src/assets/images/vite.svg?raw';
-import urlJson from './src/assets/07.json?url';
+const modules = import.meta.glob('./src/10/*.js', { eager: true });
 
-console.log(imageUrl);
-console.log(imageUrl2);
-console.log(urlJson);
+console.log(modules);
 
-document.getElementById('image').src = imageUrl;
+// Модули будут загружены только после клика на документе
+// document.addEventListener('click', () => {
+//   Object.values(modules).forEach((module) => {
+//     module().then((data) => {
+//       console.log(data);
+//     })
+//   });
+// })
