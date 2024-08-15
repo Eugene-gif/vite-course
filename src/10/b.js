@@ -1,3 +1,5 @@
 console.log('module b');
 
-export const name = 'NameString';
+export const name = 'Bill';
+
+export default 'b';
