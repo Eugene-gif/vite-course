@@ -15,6 +15,7 @@ export default {
       typescript: true,
     }),
   ],
+  envPrefix: 'APP_',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
