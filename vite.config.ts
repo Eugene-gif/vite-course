@@ -1,6 +1,7 @@
 // vite.config.ts
 import Inspect from 'vite-plugin-inspect'
 import checker from 'vite-plugin-checker'
+import path from 'path'
 
 export default {
   // publicDir: 'build', // по умолчанию это папка public
@@ -14,4 +15,9 @@ export default {
       typescript: true,
     }),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    }
+  }
 }
