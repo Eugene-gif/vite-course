@@ -5,6 +5,41 @@ import checker from 'vite-plugin-checker';
 import path, { resolve } from 'path';
 
 export default {
+  // Сервер для разработки
+  server: {
+    port: '1488',
+    // strictPort: true, // Жесткий запуск только на указанном порту
+    // Добавляет заголовки ответов
+    headers: {
+      alt: 'b',
+      volt: 'bcd'
+    },
+    // Запрашиваемый список через адресную строку
+    proxy: {
+      // '/products': 'https://dummyjson.com',
+
+      // /api/products => https://dummyjson.com/products
+      // В данном случае у нас появляется возможность динамически менять значение в адресной строке и получать соответствующий результат
+      '/api': {
+        target: 'https://dummyjson.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      }
+    }
+  },
+  // Превью-сервер билда
+  preview: {
+    port: '3300',
+    // open - это тот адрес, который должен открыться сразу после запуска preview-сервера
+    open: '/api/products',
+    proxy: {
+      '/api': {
+        target: 'https://dummyjson.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      }
+    }
+  },
   // publicDir: 'build', // по умолчанию это папка public
   esbuild: {
     jsxFactory: 'create',
